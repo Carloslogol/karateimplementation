@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Karate Timeline</title>
+    <style>
+      body, html { font-family: arial, sans-serif; font-size: 11pt; }
+      #visualization { box-sizing: border-box; width: 100%; height: 300px; }
+      .vis-item.failed { background-color: #F2928C; }
+      .page-heading { padding: 0.5em; margin-bottom: 0.5em; background-color: lightcyan; border: 1px solid gray; }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="page-heading">
+      <a href="karate-summary.html">Summary</a>
+    </div>     
+    <div id="visualization"></div>
+    <script>
+var groups = [{"content":"pool-1-thread-2","id":1},{"content":"pool-1-thread-3","id":2},{"content":"pool-1-thread-4","id":3},{"content":"pool-1-thread-1","id":4}];
+var items = [{"id":1,"group":1,"content":"features\/put[1.1:20]","start":1649351167466,"end":1649351168722,"title":"features\/put[1.1:20] 12:06:07.466-12:06:08.722"},{"id":2,"group":2,"content":"features\/put[1.2:21]","start":1649351167470,"end":1649351168656,"title":"features\/put[1.2:21] 12:06:07.470-12:06:08.656"},{"id":3,"group":1,"content":"features\/get[1.1:18]","start":1649351165318,"end":1649351167457,"title":"features\/get[1.1:18] 12:06:05.318-12:06:07.457"},{"id":4,"group":2,"content":"features\/get[1.2:19]","start":1649351165318,"end":1649351167457,"title":"features\/get[1.2:19] 12:06:05.318-12:06:07.457"},{"id":5,"group":3,"content":"features\/post[1.1:17]","start":1649351165318,"end":1649351167876,"title":"features\/post[1.1:17] 12:06:05.318-12:06:07.876 As a valid user, I want to get the corresponding response_code 200"},{"id":6,"group":4,"content":"features\/post[1.2:18]","start":1649351166283,"end":1649351167863,"title":"features\/post[1.2:18] 12:06:06.283-12:06:07.863 As a invalid user, I want to get the corresponding response_code 400"},{"id":7,"group":4,"content":"features\/customer_contact[1.1:20]","start":1649351165318,"end":1649351166268,"title":"features\/customer_contact[1.1:20] 12:06:05.318-12:06:06.268 get the status service","className":"failed"}];
+</script>
+    <script>
+      var container = document.getElementById('visualization');
+      var timeline = new vis.Timeline(container);
+      timeline.setOptions({groupOrder: 'content'});
+      timeline.setGroups(new vis.DataSet(groups));
+      timeline.setItems(new vis.DataSet(items));
+    </script>
+  </body>
+</html>
